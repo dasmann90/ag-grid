@@ -1,0 +1,46 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">My App</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+    <ng-container *ngFor="let menu of navItems; let i = index" >
+        <li class="nav-item">
+            <ng-container *ngIf="menu.items.length == 0">
+                <a class="nav-link" (click)="menuTap(menu)">
+                    <i [class]="menu.icon"></i>
+                    <span>{{menu.name}}</span></a>
+            </ng-container>
+            
+            <ng-container *ngIf="menu.items.length > 0">
+                <a class="nav-link collapsed"  data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="true" aria-controls="collapseTwo">
+                    <i [class]="menu.icon"></i>
+                    <span>{{menu.name}}</span></a>
+                
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <ng-container *ngFor="let subMenu of menu.items; let j = index" >
+                                <a class="collapse-item"(click)="menuTap(subMenu)" href="Javascript:void();">{{subMenu.name}}</a>
+                            </ng-container>
+                        </div>
+                    </div>
+            </ng-container>
+            
+            
+        </li>
+        
+    </ng-container>
+    <!-- Nav Item - Dashboard -->
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+</ul>
+<!-- End of Sidebar -->
